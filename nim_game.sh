@@ -1,20 +1,40 @@
 #!/bin/bash
-echo "Bienvenue dans le jeu de Nim ce jeu ce joue à 2 ! Il y a 20 éléments dans le jeu; 
+echo "Bienvenue dans le jeu de Nim ce jeu ce joue à 2 ! 
 Chaque joueur devra choisir entre 1 et jusqu'à 3 éléments à chaque tour.
 Celui qui prendra le ou les dernier(s) élément gagne la partie !"
-read pieces
-echo "Combien d'éléments voulez-vous afficher ?"
+
+
+
+while true
+do
+    echo "choisir entre 1 et jusqu'à 3 éléments "
+    read pieces
+    if [ `expr $pieces % 4` -eq 0 ]
+    then
+        break
+    else
+        echo "c'est pas comme ça qu'on joue !"
+    fi
+done
+
+echo ""
+echo  "Now you play with ($pieces) elements :"
 for i in `seq 1 $pieces`
 do
-    echo -n "|"
-    done
+    echo  "|"
+done
+echo ""
 
 game=true
-pieces=20
+
+
 while [ $pieces = true ]
+
 if [ "$pieces"-gt 0 ]
 do
-echo "c'est parti ! "
+    echo "| "
+done 
+echo ""
     read player_one
         if [ $player_one -lt 1 ] || [ $player_one -gt 3 ]
         then
@@ -33,10 +53,6 @@ echo "c'est parti ! "
         echo "Il prend $player_ia élément(s)"
         let "pieces = pieces - player_ia"
         echo -n "Il reste ($pieces) éléments :"
-            for i in `seq 1 $pieces`
-            do
-            echo -n "|"
-        done
     else
         echo "Ce choix n'est pas possible, vous pouvez retirer de 1 à 3 éléments."
     fi
